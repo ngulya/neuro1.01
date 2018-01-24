@@ -11,8 +11,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn import datasets, linear_model
 import scipy.sparse.csr as csr
-# source activate python3_5
-# source deactivate
+
 from sklearn import metrics
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
@@ -35,21 +34,24 @@ hist['Date'] = pd.to_datetime(hist['Date'])
 hist['Week'] = hist['Date'].dt.week
 hist['Weekday'] = hist['Date'].dt.weekday
 hist['Day'] = hist['Date'].dt.dayofyear
-print(hist[0:15])
+# print(hist[0:15])
 
-# mas = []
-# n = 0
-# n2 = 0
-# # print(hist['High'][0])
-# while n2 < 2:
-# 	mas.append([])
-# 	n = 0
-# 	while n < 30:
-# 		mas[n2].append([])
-# 		mas[n2][n].append(hist['High'][n + n2])
-# 		mas[n2][n].append(hist['Close'][n + n2])
-# 		mas[n2][n].append(hist['Open'][n + n2])
-# 		mas[n2][n].append(hist['Low'][n + n2])
-# 		n = n + 1
-# 	n2 = n2 + 1
-# print(mas[0])
+mas = []
+n = 0
+n2 = 0
+# print(hist['High'][0])
+while n2 < 2:
+	mas.append([])
+	n = 0
+	while n < 30:
+		mas[n2].append([])
+		mas[n2][n].append(hist['High'][n + n2])
+		mas[n2][n].append(hist['Close'][n + n2])
+		mas[n2][n].append(hist['Open'][n + n2])
+		mas[n2][n].append(hist['Low'][n + n2])
+		mas[n2][n].append(hist['Week'])
+		mas[n2][n].append(hist['Weekday'])
+		mas[n2][n].append(hist['Day'])
+		n = n + 1
+	n2 = n2 + 1
+print(mas[0][1][0:5])
